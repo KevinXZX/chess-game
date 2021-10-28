@@ -2,7 +2,6 @@ package game;
 
 public interface Piece {
     boolean checkLegal(char x, int y);
-
     void move(char x, int y);
 
     char getPosX();

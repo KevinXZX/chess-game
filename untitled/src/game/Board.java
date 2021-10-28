@@ -4,14 +4,12 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 public enum Board {
     INSTANCE;
     static Piece[][] position = new Piece[2][16];
     int promoteCounterBlack = 3;
     int promoteCounterWhite = 3;
     private Map<Point, Piece> boardMap = new HashMap<>();
-
     public void start() {
         position[0][0] = new Rook("R1", 'w', 'a', 1); //White Pieces
         position[0][1] = new Knight("N1", 'w', 'b', 1);

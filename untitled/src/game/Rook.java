@@ -6,7 +6,6 @@ public class Rook implements Piece {
     private final String name;
     private char posX;
     private int posY;
-
     public Rook(String name, char colour, char posX, int posY) {
         this.colour = colour;
         this.name = name;

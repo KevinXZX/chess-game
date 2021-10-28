@@ -6,7 +6,6 @@ public class Queen implements Piece {
     private final String name;
     private char posX;
     private int posY;
-
     public Queen(String name, char colour, char posX, int posY) {
         this.colour = colour;
         this.name = name;

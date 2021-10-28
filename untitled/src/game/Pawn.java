@@ -7,7 +7,6 @@ public class Pawn implements Piece {
     private int posY;
     private boolean hasNotMoved = true;
     private boolean hasPromoted = false;
-
     public Pawn(String name, char a, char posX) {
         this.colour = a;
         this.name = name;

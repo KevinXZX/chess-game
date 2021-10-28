@@ -6,7 +6,6 @@ public class King implements Piece {
     private final String name;
     private char posX;
     private int posY;
-
     public King(String name, char colour) {
         this.name = name;
         this.colour = colour;

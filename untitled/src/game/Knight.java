@@ -6,7 +6,6 @@ public class Knight implements Piece {
     private final String name;
     private char posX;
     private int posY;
-
     public Knight(String name, char colour, char posX, int posY) {
         this.colour = colour;
         this.name = name;
