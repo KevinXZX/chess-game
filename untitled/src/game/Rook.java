@@ -1,7 +1,7 @@
 package game;
 
 public class Rook implements Piece {
-    public final boolean hasPromoted = false;
+    private final boolean hasPromoted = false;
     private final char colour;
     private final String name;
     private char posX;

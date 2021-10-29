@@ -7,8 +7,8 @@ import java.util.Scanner;
 public enum Board {
     INSTANCE;
     static Piece[][] position = new Piece[2][16];
-    int promoteCounterBlack = 3;
-    int promoteCounterWhite = 3;
+    private int promoteCounterBlack = 3;
+    private int promoteCounterWhite = 3;
     private Map<Point, Piece> boardMap = new HashMap<>();
     public void start() {
         position[0][0] = new Rook("R1", 'w', 'a', 1); //White Pieces
@@ -56,7 +56,10 @@ public enum Board {
             }
         }
     }
+    public boolean canCastle(char colour, String name){
 
+        return false;
+    }
     public boolean movePiece(String name, char colour, char posX, int posY) {
         for (int i = 0; i < position.length; i++) {
             for (int h = 0; h < position[0].length; h++) {
