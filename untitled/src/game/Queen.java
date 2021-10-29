@@ -6,6 +6,7 @@ public class Queen implements Piece {
     private final String name;
     private char posX;
     private int posY;
+
     public Queen(String name, char colour, char posX, int posY) {
         this.colour = colour;
         this.name = name;
@@ -40,33 +41,51 @@ public class Queen implements Piece {
     }
 
     public boolean checkLegal(char x, int y) {
-        boolean valid = false;
         if (Game.offBoard(x, y)) {
             return false;
         } else if (Board.INSTANCE.getPosition(x, y) == this.colour) { //Cannot take own Pieces
             return false;
         }
-        if (Math.abs((posY - y)) == Math.abs((posX - x))) { //Diagonals
-            valid = true;
+        if (Math.abs((posY - y)) == Math.abs((posX - x))) {//Diagonals
+            char currentPosX = posX;
+            int currentPosY = posY;
+            while (currentPosX != x && currentPosY != y) {
+                if (currentPosX > x) {
+                    currentPosX--;
+                } else {
+                    currentPosX++;
+                }
+                if (currentPosY > y) {
+                    currentPosY--;
+                } else {
+                    currentPosY++;
+                }
+                if (currentPosX == x && currentPosY == y) {
+                    return true;
+                } else if (Board.INSTANCE.getPosition(currentPosX, currentPosY) != '0') {
+                    return false;
+                }
+            }
         } else if (posX == x || posY == y) { //Cross Movement
             char currentPosX = posX;
             int currentPosY = posY;
-            valid = true;
             while (currentPosX != x || currentPosY != y) { //Loop to check if cross movement is obstructed
-                if (currentPosX < x - 1) {
+                if (currentPosX < x) {
                     currentPosX++;
-                } else if (currentPosX > x + 1) {
+                } else if (currentPosX > x) {
                     currentPosX--;
-                } else if (currentPosY < y - 1) {
+                } else if (currentPosY < y) {
                     currentPosY++;
-                } else if (currentPosY > y + 1) {
+                } else if (currentPosY > y) {
                     currentPosY--;
                 }
-                if (Board.INSTANCE.getPosition(currentPosX, currentPosY) != '0') {
-                    valid = false;
+                if (currentPosX == x && currentPosY == y) {
+                    return true;
+                } else if (Board.INSTANCE.getPosition(currentPosX, currentPosY) != '0') {
+                    return false;
                 }
             }
         }
-        return valid;
+        return false;
     }
 }

@@ -43,7 +43,6 @@ public class Rook implements Piece {
     }
 
     public boolean checkLegal(char x, int y) {
-        boolean valid = false;
         if (Game.offBoard(x, y)) {
             return false;
         } else if (Board.INSTANCE.getPosition(x, y) == this.colour) { //Cannot take own Pieces
@@ -51,22 +50,25 @@ public class Rook implements Piece {
         } else if (posX == x || posY == y) {
             char currentPosX = posX;
             int currentPosY = posY;
-            valid = true;
-            while (currentPosX != x || currentPosY != y) {
-                if (currentPosX < x - 1) {
+            while (currentPosX != x || currentPosY != y) { //Loop to check if cross movement is obstructed
+                if (currentPosX < x) {
                     currentPosX++;
-                } else if (currentPosX > x + 1) {
+                } else if (currentPosX > x) {
                     currentPosX--;
-                } else if (currentPosY < y - 1) {
+                } else if (currentPosY < y) {
                     currentPosY++;
-                } else if (currentPosY > y + 1) {
+                } else if (currentPosY > y) {
                     currentPosY--;
                 }
-                if (Board.INSTANCE.getPosition(currentPosX, currentPosY) != '0') {//Checks if position is occupied
-                    valid = false;
+                if(currentPosX == x && currentPosY== y){
+                    return true;
+                }
+                else if (Board.INSTANCE.getPosition(currentPosX, currentPosY) != '0') {
+                    return false;
                 }
             }
         }
-        return valid;
+        return false;
     }
 }
+
